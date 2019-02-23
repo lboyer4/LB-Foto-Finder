@@ -1,14 +1,14 @@
 * {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
+  margin: 0;
 }
 
 body {
   background-color: #3E2A35;
   color: #fff;
   display: grid;
-  height: 1600px;
-  grid-template-rows: 6% 40% auto;
+  grid-template-rows: 90px 355px auto;
   grid-template-columns: 50% 50%;
 }
 
@@ -102,7 +102,6 @@ button {
   margin: 40px 0;
 }
 
-
 .view-favorites,
 .add-to-album {
   width: 45%;
@@ -111,9 +110,8 @@ button {
 }
 
 .view-favorites {
-  margin-right: 48px;
+  margin-right: 9%;
 }
-
 
 section {
   background-color: #C2B2B4;
@@ -121,5 +119,53 @@ section {
   grid-column: 1 /span 2;
   display: flex;
   flex-wrap: wrap;
+  padding: 85px;
+  padding-top: 0;
 }
 
+.photo-card {
+  display: grid;
+  grid-template-rows: 54px 125px 80px 42px;
+  background-color: #fff;
+  color: #3E2A35;
+  height: 300px;
+  width: 235px;
+  margin: 30px;
+  border: 1px solid #3E2A35;
+}
+
+h2 {
+  grid-row: 1;
+  margin: 5px;
+}
+
+.insert-photo {
+  grid-row: 2;
+}
+
+p {
+  grid-row: 3;
+  margin: 5px;
+}
+
+div {
+  display: flex;
+  width: 235px;
+}
+
+.trash-love {
+  background-color: #5B4447;
+  grid-row: 4;
+  padding: 7px;
+}
+
+.delete-button {
+  height: 28px;
+  width: 21px;
+  margin-right: 155px;
+}
+
+.favorite-button {
+  height: 28px;
+  width: 24px;
+}
