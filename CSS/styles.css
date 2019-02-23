@@ -8,14 +8,14 @@ body {
   background-color: #3E2A35;
   color: #fff;
   display: grid;
-  grid-template-rows: 90px 355px auto;
   grid-template-columns: 50% 50%;
+  grid-template-rows: 90px 355px auto;
 }
 
 nav {
   display: grid;
-  grid-row: 1;
   grid-column: 1 /span 2;
+  grid-row: 1;
   grid-template-columns: 50% 50%
 }
 
@@ -26,7 +26,7 @@ nav {
 
 h1 {
   font-size: 40px;
-   margin: 10px;
+  margin: 10px;
 }
 
 .camera {
@@ -42,71 +42,96 @@ h1 {
 .search-bar {
   border-radius: 5px;
   float: right;
-  margin: 5px;
   height: 43px;
+  margin: 5px;
   width: 65%;
 }
 
 main {
-  grid-row: 2;
   grid-column: 1 /span 2;
+  grid-row: 2;
 }
 
 form {
   color: #fff;
   grid-row: 2;
   height: 500px;
-  width: 50%;
   margin: auto;
+  width: 50%;
 }
 
 .title-label {
-  width: 100%;
-  height: 20px;
   display: block;
+  height: 20px;
   margin: 5px, auto 5px 2px;
+  width: 100%;
 }
 
 .title-input {
-  width: 100%;
-  height: 44px;
-  display: block;
   border-radius: 2px;
+  display: block;
+  height: 44px;
+  width: 100%;
 }
 
 .caption-label {
-  width: 100%;
-  height: 20px;
   display: block;
+  height: 20px;
   margin: 20px auto 5px 2px;
+  width: 100%;
 }
 
 .caption-input {
-  width: 100%;
-  height: 44px;
-  display: block;
   border-radius: 2px;
+  display: block;
+  height: 44px;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
 button {
-  border: 0;
-  border-radius: 2px;
-  color: #fff;
   background-color: #5B4447;
+  border-radius: 2px;
+  border: 0;
+  color: #fff;
+  font-size: .90em;
+  margin-top: 25px;
 }
 
-.choose-file {
-  width: 100%;
-  height: 44px;
+button:Hover {
+  background-color: #938284;
+}
+
+.inputfile {
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0.1px;
+  z-index: -1;
+}
+
+.inputfile + label {
+  background-color: #5B4447;
+  border-radius: 2px;
   display: block;
-  margin: 40px 0;
+  cursor: pointer;
+  height: 44px;
+  margin: 20px 0;
+  padding-top: 13px;
+  text-align: center;
+  width: 100%;
+}
+
+.inputfile + label:hover {
+  background-color: #938284
 }
 
 .view-favorites,
 .add-to-album {
-  width: 45%;
-  height: 40px;
   display: inline-block;
+  height: 40px;
+  width: 45%;
 }
 
 .view-favorites {
@@ -115,23 +140,23 @@ button {
 
 section {
   background-color: #C2B2B4;
-  grid-row: 3;
-  grid-column: 1 /span 2;
   display: flex;
   flex-wrap: wrap;
+  grid-column: 1 /span 2;
+  grid-row: 3;
   padding: 85px;
   padding-top: 0;
 }
 
 .photo-card {
+  background-color: #fff;
+  border: 1px solid #3E2A35;
+  color: #3E2A35;
   display: grid;
   grid-template-rows: 54px 125px 80px 42px;
-  background-color: #fff;
-  color: #3E2A35;
   height: 300px;
-  width: 235px;
   margin: 30px;
-  border: 1px solid #3E2A35;
+  width: 235px;
 }
 
 h2 {
@@ -161,8 +186,8 @@ div {
 
 .delete-button {
   height: 28px;
-  width: 21px;
   margin-right: 155px;
+  width: 21px;
 }
 
 .favorite-button {
