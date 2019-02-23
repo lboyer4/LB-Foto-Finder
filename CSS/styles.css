@@ -102,7 +102,6 @@ button {
   margin: 40px 0;
 }
 
-
 .view-favorites,
 .add-to-album {
   width: 45%;
@@ -111,7 +110,7 @@ button {
 }
 
 .view-favorites {
-  margin-right: 48px;
+  margin-right: 9%;
 }
 
 section {
@@ -120,9 +119,8 @@ section {
   grid-column: 1 /span 2;
   display: flex;
   flex-wrap: wrap;
-  padding: 95px;
+  padding: 85px;
   padding-top: 0;
-  justify-content: center;
 }
 
 .photo-card {
