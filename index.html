@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Foto-Finder</title>
   <link rel="stylesheet" type="text/css" href="./CSS/normalize.css">
   <link rel="stylesheet" type="text/css" href="./CSS/styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+  rel="stylesheet">
 </head>
 <body>
   <nav>
     <article class="left-side">
     	<h1>FOTO <img src="Images/foto-finder-logo.svg" class="camera"> FINDER</h1>
     </article>
-    <article class="right-side">
-    	<input class="search-bar" value="Search">
-    </article>
+    <form class="right-side">
+    	<input class="search-bar" placeholder="Search"><button class="search"><i class="fas fa-search"></i></button>
+    </form>
   </nav>
   <main>
-  	<form>
+  	<form class="create-card" action="">
   		<label class="title-label">Title</label>
   			<input class="title-input">
   		<label class="caption-label">Caption</label>
@@ -24,50 +27,10 @@
   		<input type="file" name="file" id="file" class="inputfile"/>
       <label for="file">Choose File </label>
   		<button class="view-favorites">View 1 Favorites</button>
-  		<button class="add-to-album">Add to Album</button>
+  		<button id="add-btn" class="add-to-album">Add to Album</button>
   	</form>
   </main>
   <section class="photo-gallery">
-        <article class="photo-card">
-      <h2 id="title">Waterfall Image</h2>
-      <img id="photo" class="insert-photo">
-      <p id="description">Lorem ipsum dolor sit amet, consectuer apiscing elit</p>
-      <div class="trash-love">
-        <img src="Images/delete.svg" class="delete-button">
-        <img src="Images/favorite.svg" class="favorite-button">
-    </article>
-        <article class="photo-card">
-      <h2 id="title">Waterfall Image</h2>
-      <img id="photo" class="insert-photo">
-      <p id="description">Lorem ipsum dolor sit amet, consectuer apiscing elit</p>
-      <div class="trash-love">
-        <img src="Images/delete.svg" class="delete-button">
-        <img src="Images/favorite.svg" class="favorite-button">
-    </article>
-    <article class="photo-card">
-      <h2 id="title">Waterfall Image</h2>
-      <img id="photo" class="insert-photo">
-      <p id="description">Lorem ipsum dolor sit amet, consectuer apiscing elit</p>
-      <div class="trash-love">
-        <img src="Images/delete.svg" class="delete-button">
-        <img src="Images/favorite.svg" class="favorite-button">
-    </article>
-    <article class="photo-card">
-      <h2 id="title">Waterfall Image</h2>
-      <img id="photo" class="insert-photo">
-      <p id="description">Lorem ipsum dolor sit amet, consectuer apiscing elit</p>
-      <div class="trash-love">
-        <img src="Images/delete.svg" class="delete-button">
-        <img src="Images/favorite.svg" class="favorite-button">
-    </article>
-    <article class="photo-card">
-      <h2 id="title">Waterfall Image</h2>
-      <img id="photo" class="insert-photo">
-      <p id="description">Lorem ipsum dolor sit amet, consectuer apiscing elit</p>
-      <div class="trash-love">
-        <img src="Images/delete.svg" class="delete-button">
-        <img src="Images/favorite.svg" class="favorite-button">
-    </article>
   </section>
   <script src="photo.js"></script>
   <script src="main.js"></script>

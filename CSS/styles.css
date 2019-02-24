@@ -16,7 +16,7 @@ nav {
   display: grid;
   grid-column: 1 /span 2;
   grid-row: 1;
-  grid-template-columns: 50% 50%
+  grid-template-columns: 60% 40%
 }
 
 .left-side {
@@ -40,11 +40,21 @@ h1 {
 }
 
 .search-bar {
-  border-radius: 5px;
-  float: right;
+  border-radius: 5px 0 0 5px;
+  border: 2px solid #C2B2B4;
+  display: inline-block;
   height: 43px;
-  margin: 5px;
-  width: 65%;
+  margin: 4px 0;
+  width: 90%;
+}
+
+.search {
+  background-color: #C2B2B4;
+  display:inline-block;
+  border: 2px solid #C2B2B4;
+  height: 43px;
+  margin: 5px 0;
+  border-radius: 0 5px 5px 0;
 }
 
 main {
@@ -52,7 +62,7 @@ main {
   grid-row: 2;
 }
 
-form {
+.create-card {
   color: #fff;
   grid-row: 2;
   height: 500px;
@@ -60,33 +70,32 @@ form {
   width: 50%;
 }
 
-.title-label {
-  display: block;
-  height: 20px;
-  margin: 5px, auto 5px 2px;
-  width: 100%;
-}
-
-.title-input {
-  border-radius: 2px;
-  display: block;
-  height: 44px;
-  width: 100%;
-}
-
+.title-label,
 .caption-label {
   display: block;
   height: 20px;
+  width: 100%;
+}
+
+.title-label {
+  margin: 5px, auto 5px 2px;
+}
+
+.caption-label {
   margin: 20px auto 5px 2px;
+}
+
+.title-input,
+.caption-input {
+  border: 0;
+  border-radius: 2px;
+  display: block;
+  height: 44px;
   width: 100%;
 }
 
 .caption-input {
-  border-radius: 2px;
-  display: block;
-  height: 44px;
-  margin-bottom: 40px;
-  width: 100%;
+  margin-bottom: 40px;  
 }
 
 button {
@@ -166,6 +175,8 @@ h2 {
 
 .insert-photo {
   grid-row: 2;
+  width: 100%;
+  height:100%;
 }
 
 p {
