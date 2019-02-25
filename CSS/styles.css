@@ -9,7 +9,7 @@ body {
   color: #fff;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 90px 355px auto;
+  grid-template-rows: 95px 355px auto;
 }
 
 nav {
@@ -26,7 +26,7 @@ nav {
 
 h1 {
   font-size: 40px;
-  margin: 10px;
+  margin: 20px 10px 10px 30px;
 }
 
 .camera {
@@ -44,8 +44,8 @@ h1 {
   border: 2px solid #C2B2B4;
   display: inline-block;
   height: 43px;
-  margin: 4px 0;
-  width: 90%;
+  margin: 20px 0 4px 10px;
+  width: 80%;
 }
 
 .search {
@@ -53,7 +53,6 @@ h1 {
   display:inline-block;
   border: 2px solid #C2B2B4;
   height: 43px;
-  margin: 5px 0;
   border-radius: 0 5px 5px 0;
 }
 
@@ -204,4 +203,50 @@ div {
 .favorite-button {
   height: 28px;
   width: 24px;
+}
+
+@media only screen and (max-width: 898px) {
+
+  .view-favorites {
+    margin-right: 7%;
+  }
+}
+
+@media only screen and (max-width: 627px) {
+
+  body {
+    grid-template-rows: 180px 355px auto;
+  }
+
+  nav {
+    display: block;
+    text-align: center;
+  }
+
+  .create-card {
+    width: 85%;
+  }
+
+   section {
+    padding: 40px;
+    align-content: center;
+  }
+
+  .photo-card {
+    margin: 25px;
+  }
+
+}
+
+@media only screen and (max-width: 368px){
+
+  h1 {
+    font-size: 33px;
+  }
+
+ section {
+    padding: 0;
+    align-content: center;
+  }
+
 }
