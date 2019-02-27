@@ -11,7 +11,7 @@ class Photo {
 		localStorage.setItem('gallery', JSON.stringify(array));
 	}
 
-  updateContent() {
+  updatePhoto() {
     // var index = images.indexOf(this)
     // images.splice(index, 1, this);
     this.saveToStorage(images)
@@ -27,9 +27,4 @@ class Photo {
       this.saveToStorage(images);
     }
   }
-
-
-	// updatePhoto() {
-
-	// }
 }

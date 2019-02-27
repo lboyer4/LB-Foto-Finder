@@ -32,9 +32,9 @@ function loadPage(oldImages) {
   }
   var favorites = document.querySelectorAll('.favorite-button');
   for (var i = 0; i < favorites.length; i++) {
-  	if (JSON.parse(favorites[i].dataset.favorite)) { 
-  		increaseFavoriteCount();
-  	}
+    if (JSON.parse(favorites[i].dataset.favorite)) { 
+      increaseFavoriteCount();
+    }
   }
 }
 
@@ -47,15 +47,15 @@ function loadImg(e) {
 }
 
 function createCard(e) {
-	var title = document.querySelector('.title-input');
-	var image = e.target.result; 
-	var caption = document.querySelector('.caption-input');
-	var newPhoto = new Photo(title.value, image, caption.value, Date.now());
-	images.push(newPhoto);
-	displayCard(newPhoto);
+  var title = document.querySelector('.title-input');
+  var image = e.target.result; 
+  var caption = document.querySelector('.caption-input');
+  var newPhoto = new Photo(title.value, image, caption.value, Date.now());
+  images.push(newPhoto);
+  displayCard(newPhoto);
   clearFields(title, caption);
   addBtn.disabled = true;
-	newPhoto.saveToStorage(images);
+  newPhoto.saveToStorage(images);
 }
 
 function clearFields(title, caption) {
@@ -76,7 +76,7 @@ function disableButton(e) {
 
 function displayCard(newPhotoObj) {
   var src = newPhotoObj.favorite ? `Images/favorite-active.svg` : `Images/favorite.svg`
-	var text = `<article class="photo-card" data-id="${newPhotoObj.cardId}">
+  var text = `<article class="photo-card" data-id="${newPhotoObj.cardId}">
       <h2 class="photo-title" contenteditable="true">${newPhotoObj.title}</h2>
       <img id="photo" class="insert-photo" src=${newPhotoObj.image}>
       <p class="photo-caption" contenteditable="true">${newPhotoObj.caption}</p>
@@ -106,7 +106,7 @@ function saveContent(e) {
 }
 
 function findPhoto(e) {
-	if (!e.target.closest('.photo-card')) return;
+  if (!e.target.closest('.photo-card')) return;
   var photo = e.target.closest('.photo-card');
   var cardId = parseInt(photo.getAttribute('data-id'));
   return images.find(function(photo) {
@@ -115,18 +115,18 @@ function findPhoto(e) {
 }
 
 function clickHandler(e) {
-	var targetPhoto = findPhoto(e);
-	if (e.target.className === 'favorite-button') {
-		e.target.dataset.favorite = !JSON.parse(e.target.dataset.favorite);
-		targetPhoto.favorite = !targetPhoto.favorite;
-		targetPhoto.favorite ? activateFavorite(e.target) : deactivateFavorite(e.target);
-		targetPhoto.favorite ? increaseFavoriteCount() : decreaseFavoriteCount();
-		targetPhoto.updateContent(images);
-	}
+  var targetPhoto = findPhoto(e);
+  if (e.target.className === 'favorite-button') {
+    e.target.dataset.favorite = !JSON.parse(e.target.dataset.favorite);
+    targetPhoto.favorite = !targetPhoto.favorite;
+    targetPhoto.favorite ? activateFavorite(e.target) : deactivateFavorite(e.target);
+    targetPhoto.favorite ? increaseFavoriteCount() : decreaseFavoriteCount();
+    targetPhoto.updateContent(images);
+  }
 
-	if (e.target.className === 'delete-button') {
+  if (e.target.className === 'delete-button') {
     deleteIdea(e);
-	}
+  }
 }
 
 function deleteIdea(e) {
@@ -137,53 +137,53 @@ function deleteIdea(e) {
 }
 
 function increaseFavoriteCount() {
-	var favoriteCount = document.querySelector('.favorite-count');
-	var totalFavorite = Number(favoriteCount.innerHTML);
-	totalFavorite++;
-	favoriteCount.innerHTML = totalFavorite;
+  var favoriteCount = document.querySelector('.favorite-count');
+  var totalFavorite = Number(favoriteCount.innerHTML);
+  totalFavorite++;
+  favoriteCount.innerHTML = totalFavorite;
 }
 
 function decreaseFavoriteCount() {
-		var favoriteCount = document.querySelector('.favorite-count');
-		var totalFavorite = Number(favoriteCount.innerHTML);
-		totalFavorite--;
-		favoriteCount.innerHTML = totalFavorite;
+    var favoriteCount = document.querySelector('.favorite-count');
+    var totalFavorite = Number(favoriteCount.innerHTML);
+    totalFavorite--;
+    favoriteCount.innerHTML = totalFavorite;
 }
 
 function mouseOver(e) {
-	if (e.target.className === 'favorite-button') {
-		activateFavorite(e.target);
-	}
+  if (e.target.className === 'favorite-button') {
+    activateFavorite(e.target);
+  }
   if (e.target.className === 'delete-button') {
     activateDelete(e.target);
   }
 }
 
 function mouseOut(e) {
-	if (e.target.className === 'favorite-button') {
-		deactivateFavorite(e.target);
-	}
+  if (e.target.className === 'favorite-button') {
+    deactivateFavorite(e.target);
+  }
   if (e.target.className === 'delete-button') {
     deactivateDelete(e.target);
   }
 }
 
 function activateFavorite(target) {
-	target.setAttribute('src', 'Images/favorite-active.svg');
+  target.setAttribute('src', 'Images/favorite-active.svg');
 }
 
 function deactivateFavorite(target) {
-	if (target.dataset.favorite == 'false'){
-		target.setAttribute('src', 'Images/favorite.svg');
-	}
+  if (target.dataset.favorite == 'false'){
+    target.setAttribute('src', 'Images/favorite.svg');
+  }
 }
 
 function activateDelete(target) {
-	target.setAttribute('src', 'Images/delete-active.svg');
+  target.setAttribute('src', 'Images/delete-active.svg');
 }
 
 function deactivateDelete(target) {
-	target.setAttribute('src', 'Images/delete.svg');
+  target.setAttribute('src', 'Images/delete.svg');
 }
 
 function searchImages(e) {
@@ -226,4 +226,3 @@ function clearImages() {
   var photoGallery = document.querySelector('.photo-gallery');
   photoGallery.innerHTML = '';
 }
-
