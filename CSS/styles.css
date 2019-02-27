@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #3E2A35;
+  background-color: #C2B2B4;
   color: #fff;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -13,6 +13,7 @@ body {
 }
 
 nav {
+  background-color: #3E2A35;
   display: grid;
   grid-column: 1 /span 2;
   grid-row: 1;
@@ -44,7 +45,7 @@ h1 {
   border: 2px solid #C2B2B4;
   display: inline-block;
   height: 43px;
-  margin: 20px 0 4px 10px;
+  margin: 20px 0 4px 35px;
   width: 80%;
 }
 
@@ -57,6 +58,7 @@ h1 {
 }
 
 main {
+  background-color: #3E2A35;
   grid-column: 1 /span 2;
   grid-row: 2;
 }
@@ -147,7 +149,6 @@ button:Hover {
 }
 
 section {
-  background-color: #C2B2B4;
   display: flex;
   flex-wrap: wrap;
   grid-column: 1 /span 2;
@@ -162,14 +163,15 @@ section {
   color: #3E2A35;
   display: grid;
   grid-template-rows: 54px 125px 80px 42px;
-  height: 300px;
+  height: 303px;
   margin: 30px;
-  width: 235px;
+  width: 237px;
 }
 
 h2 {
   grid-row: 1;
   margin: 5px;
+  overflow: auto;
 }
 
 .insert-photo {
@@ -181,6 +183,7 @@ h2 {
 p {
   grid-row: 3;
   margin: 5px;
+  overflow: auto;
 }
 
 div {
@@ -196,7 +199,7 @@ div {
 
 .delete-button {
   height: 28px;
-  margin-right: 155px;
+  margin-right: 172px;
   width: 21px;
 }
 
@@ -205,11 +208,28 @@ div {
   width: 24px;
 }
 
-@media only screen and (max-width: 898px) {
+
+@media only screen and (max-width: 916px) {
+
+  .search-bar {
+    margin-left: 10px;
+  }
 
   .view-favorites {
     margin-right: 7%;
   }
+
+  section {
+    padding-left: 100px;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  section {
+    padding-left: 85px ;
+  } 
 }
 
 @media only screen and (max-width: 627px) {
@@ -228,20 +248,29 @@ div {
   }
 
    section {
-    padding: 40px;
     align-content: center;
   }
 
   .photo-card {
     margin: 25px;
   }
-
 }
 
-@media only screen and (max-width: 368px){
+@media only screen and (max-width: 390px) {
 
   h1 {
     font-size: 33px;
+    margin-left: 15px;
+  }
+
+  .search-bar,
+  .search {
+    height: 38px;
+  }
+
+  .search-bar {
+    width: 75%;
+    margin-left: 6px;
   }
 
  section {
@@ -249,4 +278,7 @@ div {
     align-content: center;
   }
 
+  .photo-card {
+    margin: 40px;
+  }
 }

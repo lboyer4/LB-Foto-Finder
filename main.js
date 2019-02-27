@@ -1,20 +1,44 @@
 //QUERY SELECTORS
-var addBtn = document.querySelector('#add-btn');
 var images = JSON.parse(localStorage.getItem('gallery')) || [];
+var addBtn = document.querySelector('#add-btn');
 var imageBtn = document.querySelector('.inputfile');
-var photoCardClick = document.querySelector('.photo-gallery');
-var reader = new FileReader();
 var cardContainer = document.querySelector('.photo-gallery');
+var searchBar = document.querySelector('.search-bar');
+var showFavorites = document.querySelector('.view-favorites');
+var reader = new FileReader();
 
 //EVENT LISTENERS
 addBtn.addEventListener('click', loadImg);
-photoCardClick.addEventListener('focusout', saveContent);
+cardContainer.addEventListener('focusout', saveContent);
+cardContainer.addEventListener('keyup', saveContent)
 cardContainer.addEventListener('click', clickHandler);
 cardContainer.addEventListener('mouseover', mouseOver);
 cardContainer.addEventListener('mouseout', mouseOut);
+searchBar.addEventListener('keyup', searchImages);
+showFavorites.addEventListener('click', viewFavorites);
 
+function viewFavorites(e) {
+  e.preventDefault();
+  clearImages();
+  var filterBoolean = JSON.parse(e.target.dataset.filter)
+  console.log(JSON.parse(e.target.dataset.filter));
+  e.target.dataset.filter = !filterBoolean;
+  !filterBoolean ? showAllFavorites() : showAll();
+  }
 
+function showAllFavorites() {
+   for (var i = 0; i < images.length; i++) {
+    if (images[i].favorite) {
+      displayCard(images[i])
+    }
+  }
+}
 
+function showAll() {
+  for (var i = 0; i < images.length; i++) {
+    displayCard(images[i]);
+  }
+}
 
 //FUNCTIONS
 loadPage(images);
@@ -28,8 +52,8 @@ function loadPage(oldImages) {
   }
   var favorites = document.querySelectorAll('.favorite-button');
   for (var i = 0; i < favorites.length; i++) {
-  	if (JSON.parse(favorites[i].dataset.favorite)) {
-  		activateFavorite(favorites[i])
+  	if (JSON.parse(favorites[i].dataset.favorite)) { 
+  		increaseFavoriteCount();
   	}
   }
 }
@@ -42,24 +66,32 @@ function loadImg(e) {
   }
 }
 
-function createCard(e){
-	var title = document.querySelector('.title-input').value;
+function createCard(e) {
+	var title = document.querySelector('.title-input');
 	var image = e.target.result; 
-	var caption = document.querySelector('.caption-input').value;
-	var newPhoto = new Photo(title, image, caption, Date.now());
+	var caption = document.querySelector('.caption-input');
+	var newPhoto = new Photo(title.value, image, caption.value, Date.now());
 	images.push(newPhoto);
-	displayCard(newPhoto)
+	displayCard(newPhoto);
+  clearFields(title, caption);
 	newPhoto.saveToStorage(images);
 }
 
+function clearFields(title, caption) {
+  title.value = '';
+  caption.value = '';
+}
+
+
 function displayCard(newPhotoObj) {
+  var src = newPhotoObj.favorite ? `Images/favorite-active.svg` : `Images/favorite.svg`
 	var text = `<article class="photo-card" data-id="${newPhotoObj.cardId}">
       <h2 class="photo-title" contenteditable="true">${newPhotoObj.title}</h2>
       <img id="photo" class="insert-photo" src=${newPhotoObj.image}>
       <p class="photo-caption" contenteditable="true">${newPhotoObj.caption}</p>
       <div class="trash-love">
         <img src="Images/delete.svg" class="delete-button">
-        <img src="Images/favorite.svg" data-favorite="${newPhotoObj.favorite}" class="favorite-button">
+        <img src="${src}" data-favorite="${newPhotoObj.favorite}" class="favorite-button">
       </div>
     </article>`
    cardContainer.insertAdjacentHTML('afterbegin', text);
@@ -69,13 +101,14 @@ function saveContent(e) {
   var element = e.target;
   var text = e.target.textContent;
   var targetPhoto = findPhoto(e);
+  
   if (element.className === 'photo-title') {
     targetPhoto.title = text;
   }
   if (element.className === 'photo-caption') {
     targetPhoto.caption = text;
   }
-  targetPhoto.updateContent();
+  // targetPhoto.updateContent();
   targetPhoto.saveToStorage(images);
 }
 
@@ -92,25 +125,54 @@ function clickHandler(e) {
 	var targetPhoto = findPhoto(e);
 	if (e.target.className === 'favorite-button') {
 		e.target.dataset.favorite = !JSON.parse(e.target.dataset.favorite);
-		targetPhoto.favorite = !targetPhoto.favorite
+		targetPhoto.favorite = !targetPhoto.favorite;
 		targetPhoto.favorite ? activateFavorite(e.target) : deactivateFavorite(e.target);
-		targetPhoto.saveToStorage(images);}
-
-	if (e.target.className === 'delete-button') {
+		targetPhoto.favorite ? increaseFavoriteCount() : decreaseFavoriteCount();
+		targetPhoto.updateContent(images);
 	}
 
+	if (e.target.className === 'delete-button') {
+    deleteIdea(e);
+	}
+}
+
+function deleteIdea(e) {
+  var photoCard = e.target.parentElement.parentElement;
+  photoCard.remove();
+  var targetIdea = findPhoto(e);
+  targetIdea.deleteFromStorage();
+}
+
+function increaseFavoriteCount() {
+	var favoriteCount = document.querySelector('.favorite-count');
+	var totalFavorite =Number(favoriteCount.innerHTML);
+	totalFavorite++;
+	favoriteCount.innerHTML = totalFavorite;
+}
+
+function decreaseFavoriteCount() {
+		var favoriteCount = document.querySelector('.favorite-count');
+		var totalFavorite =Number(favoriteCount.innerHTML);
+		totalFavorite--;
+		favoriteCount.innerHTML = totalFavorite;
 }
 
 function mouseOver(e) {
 	if (e.target.className === 'favorite-button') {
 		activateFavorite(e.target);
 	}
+  if (e.target.className === 'delete-button') {
+    activateDelete(e.target);
+  }
 }
 
 function mouseOut(e) {
 	if (e.target.className === 'favorite-button') {
 		deactivateFavorite(e.target);
 	}
+  if (e.target.className === 'delete-button') {
+    deactivateDelete(e.target);
+  }
 }
 
 function activateFavorite(target) {
@@ -130,3 +192,22 @@ function activateDelete(target) {
 function deactivateDelete(target) {
 	target.setAttribute('src', 'Images/delete.svg');
 }
+
+function searchImages(e) {
+  var currentSearch = e.target.value;
+  var regex = new RegExp(currentSearch, 'i');
+  var photoMatches = [];
+  clearImages();
+  for (let i = 0; i < images.length; i++) {
+    if (regex.test(images[i].title) || regex.test(images[i].caption)) {
+      photoMatches.push(images[i]);
+      displayCard(images[i]);
+    }
+  }
+}
+
+function clearImages() {
+  var photoGallery = document.querySelector('.photo-gallery');
+  photoGallery.innerHTML = '';
+}
+

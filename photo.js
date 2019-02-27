@@ -12,13 +12,22 @@ class Photo {
 	}
 
   updateContent() {
-    var index = images.indexOf(this)
-    images.splice(index, 1, this);
+    // var index = images.indexOf(this)
+    // images.splice(index, 1, this);
+    this.saveToStorage(images)
   }
 
-	// deleteFromStorage() {
+	deleteFromStorage() {
+    var index = images.indexOf(this)
+    images.splice(index, 1);
+    if (this === undefined) {
+      images = [];
+      localStorage.clear();
+    } else {
+      this.saveToStorage(images);
+    }
+  }
 
-	// }
 
 	// updatePhoto() {
 
