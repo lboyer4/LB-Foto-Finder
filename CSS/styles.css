@@ -5,14 +5,15 @@
 }
 
 body {
-  background-color: #3E2A35;
+  background-color: #C2B2B4;
   color: #fff;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 90px 355px auto;
+  grid-template-rows: 95px 355px auto;
 }
 
 nav {
+  background-color: #3E2A35;
   display: grid;
   grid-column: 1 /span 2;
   grid-row: 1;
@@ -26,7 +27,7 @@ nav {
 
 h1 {
   font-size: 40px;
-  margin: 10px;
+  margin: 20px 10px 10px 30px;
 }
 
 .camera {
@@ -44,8 +45,8 @@ h1 {
   border: 2px solid #C2B2B4;
   display: inline-block;
   height: 43px;
-  margin: 4px 0;
-  width: 90%;
+  margin: 20px 0 4px 35px;
+  width: 80%;
 }
 
 .search {
@@ -53,11 +54,11 @@ h1 {
   display:inline-block;
   border: 2px solid #C2B2B4;
   height: 43px;
-  margin: 5px 0;
   border-radius: 0 5px 5px 0;
 }
 
 main {
+  background-color: #3E2A35;
   grid-column: 1 /span 2;
   grid-row: 2;
 }
@@ -148,7 +149,6 @@ button:Hover {
 }
 
 section {
-  background-color: #C2B2B4;
   display: flex;
   flex-wrap: wrap;
   grid-column: 1 /span 2;
@@ -163,14 +163,15 @@ section {
   color: #3E2A35;
   display: grid;
   grid-template-rows: 54px 125px 80px 42px;
-  height: 300px;
+  height: 303px;
   margin: 30px;
-  width: 235px;
+  width: 237px;
 }
 
 h2 {
   grid-row: 1;
   margin: 5px;
+  overflow: auto;
 }
 
 .insert-photo {
@@ -182,6 +183,7 @@ h2 {
 p {
   grid-row: 3;
   margin: 5px;
+  overflow: auto;
 }
 
 div {
@@ -197,11 +199,98 @@ div {
 
 .delete-button {
   height: 28px;
-  margin-right: 155px;
+  margin-right: 172px;
   width: 21px;
 }
 
 .favorite-button {
   height: 28px;
   width: 24px;
+}
+
+footer {
+  grid-column: 1 /span 2;
+}
+
+#add-photo-message {
+  color: #3E2A35;
+  text-align: center
+}
+
+.add-photo-message {
+  display: none;
+}
+
+@media only screen and (max-width: 916px) {
+
+  .search-bar {
+    margin-left: 10px;
+  }
+
+  .view-favorites {
+    margin-right: 7%;
+  }
+
+  section {
+    padding-left: 100px;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  section {
+    padding-left: 85px ;
+  } 
+}
+
+@media only screen and (max-width: 627px) {
+
+  body {
+    grid-template-rows: 180px 355px auto;
+  }
+
+  nav {
+    display: block;
+    text-align: center;
+  }
+
+  .create-card {
+    width: 85%;
+  }
+
+   section {
+    align-content: center;
+  }
+
+  .photo-card {
+    margin: 25px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+
+  h1 {
+    font-size: 33px;
+    margin-left: 15px;
+  }
+
+  .search-bar,
+  .search {
+    height: 38px;
+  }
+
+  .search-bar {
+    width: 75%;
+    margin-left: 6px;
+  }
+
+ section {
+    padding: 0;
+    align-content: center;
+  }
+
+  .photo-card {
+    margin: 40px;
+  }
 }

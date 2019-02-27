@@ -1,9 +1,9 @@
 class Photo {
-	constructor(title, image, caption, cardId){
+	constructor(title, image, caption, cardId, favorite){
 		this.title = title;
 		this.image = image;
 		this.caption = caption;
-		this.favorite = false;
+		this.favorite = favorite || false;
 		this.cardId = cardId
 	}
 
@@ -12,12 +12,22 @@ class Photo {
 	}
 
   updateContent() {
-    var index = images.indexOf(this)
-    images.splice(index, 1, this);
+    // var index = images.indexOf(this)
+    // images.splice(index, 1, this);
+    this.saveToStorage(images)
   }
-	// deleteFromStorage() {
 
-	// }
+	deleteFromStorage() {
+    var index = images.indexOf(this)
+    images.splice(index, 1);
+    if (this === undefined) {
+      images = [];
+      localStorage.clear();
+    } else {
+      this.saveToStorage(images);
+    }
+  }
+
 
 	// updatePhoto() {
 

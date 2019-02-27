@@ -11,27 +11,29 @@
 </head>
 <body>
   <nav>
-    <article class="left-side">
+    <header class="left-side">
     	<h1>FOTO <img src="Images/foto-finder-logo.svg" class="camera"> FINDER</h1>
-    </article>
+    </header>
     <form class="right-side">
     	<input class="search-bar" placeholder="Search"><button class="search"><i class="fas fa-search"></i></button>
     </form>
   </nav>
   <main>
-  	<form class="create-card" action="">
+  	<form class="create-card">
   		<label class="title-label">Title</label>
-  			<input class="title-input">
+  		<input class="title-input">
   		<label class="caption-label">Caption</label>
-  			<input class="caption-input">
+  		<input class="caption-input">
   		<input type="file" name="file" id="file" class="inputfile"/>
       <label for="file">Choose File </label>
-  		<button class="view-favorites">View 1 Favorites</button>
-  		<button id="add-btn" class="add-to-album">Add to Album</button>
+  		<button data-filter="false"class="view-favorites">View <span class="favorite-count"> 0</span> Favorites</button>
+  		<button id="add-btn" class="add-to-album" disabled="true">Add to Album</button>
   	</form>
   </main>
   <section class="photo-gallery">
   </section>
+  <footer>
+    <h4 id="add-photo-message">Please Add A Photo</h4>
   <script src="photo.js"></script>
   <script src="main.js"></script>
 </body>
