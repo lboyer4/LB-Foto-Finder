@@ -208,6 +208,12 @@ div {
 
 footer {
   grid-row: 4;
+  grid-column: 1 /span 2;
+  text-align: center
+}
+
+h4 {
+  margin-top: 10px;
 }
 
 #add-photo-message {

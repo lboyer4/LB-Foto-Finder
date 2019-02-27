@@ -203,10 +203,10 @@ function viewFavorites(e) {
   e.preventDefault();
   clearImages();
   var filterBoolean = JSON.parse(e.target.dataset.filter)
-  console.log(JSON.parse(e.target.dataset.filter));
   e.target.dataset.filter = !filterBoolean;
   !filterBoolean ? showAllFavorites() : showAll();
-  }
+  messageChange();
+}
 
 function showAllFavorites() {
    for (var i = 0; i < images.length; i++) {
@@ -220,6 +220,14 @@ function showAll() {
   for (var i = 0; i < images.length; i++) {
     displayCard(images[i]);
   }
+}
+
+function messageChange() {
+  let showAll = JSON.parse(showFavorites.dataset.filter)
+  let count = showFavorites.querySelector('span').dataset.count
+  let showAllText = `Show All<span data-count="${count}" class="total-favorites"></span>`;
+  let viewFavsText = `View <span data-count="${count}" class="favorite-count">${count}</span> Favorites`;
+  showFavorites.innerHTML = showAll ? showAllText : viewFavsText;
 }
 
 function clearImages() {
