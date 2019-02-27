@@ -1,6 +1,7 @@
 //QUERY SELECTORS
 var images = JSON.parse(localStorage.getItem('gallery')) || [];
 var addBtn = document.querySelector('#add-btn');
+var form = document.querySelector('.create-card')
 var imageBtn = document.querySelector('.inputfile');
 var cardContainer = document.querySelector('.photo-gallery');
 var searchBar = document.querySelector('.search-bar');
@@ -9,6 +10,7 @@ var reader = new FileReader();
 
 //EVENT LISTENERS
 addBtn.addEventListener('click', loadImg);
+form.addEventListener('keyup', disableButton);
 cardContainer.addEventListener('focusout', saveContent);
 cardContainer.addEventListener('keyup', saveContent)
 cardContainer.addEventListener('click', clickHandler);
@@ -52,6 +54,7 @@ function createCard(e) {
 	images.push(newPhoto);
 	displayCard(newPhoto);
   clearFields(title, caption);
+  addBtn.disabled = true;
 	newPhoto.saveToStorage(images);
 }
 
@@ -60,6 +63,16 @@ function clearFields(title, caption) {
   caption.value = '';
 }
 
+function disableButton(e) {
+  console.log('test');
+  var titleInput = document.querySelector('.title-input').value;
+  var captionInput = document.querySelector('.caption-input').value;
+  if (titleInput == '' || captionInput == '') {
+    addBtn.disabled = true;
+  } else {
+    addBtn.disabled = false;
+  }
+}
 
 function displayCard(newPhotoObj) {
   var src = newPhotoObj.favorite ? `Images/favorite-active.svg` : `Images/favorite.svg`
