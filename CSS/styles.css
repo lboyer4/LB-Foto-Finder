@@ -8,7 +8,6 @@ body {
   background-color: #C2B2B4;
   color: #fff;
   display: grid;
-  grid-template-columns: 50% 50%;
   grid-template-rows: 95px 400px auto 40px;
 }
 
@@ -47,7 +46,7 @@ h1 {
   border: 2px solid #C2B2B4;
   display: inline-block;
   height: 43px;
-  margin: 20px 0 4px 35px;
+  margin: 20px -6px 4px 35px;
   width: 80%;
 }
 
@@ -61,7 +60,6 @@ h1 {
 
 main {
   background-color: #3E2A35;
-  grid-column: 1 /span 2;
   grid-row: 2;
 }
 
@@ -149,7 +147,6 @@ button:Hover {
 section {
   display: flex;
   flex-wrap: wrap;
-  grid-column: 1 /span 2;
   grid-row: 3;
   justify-content: center;
   padding-top: 0;
@@ -207,7 +204,6 @@ div {
 }
 
 footer {
-  grid-column: 1 /span 2;
   grid-row: 4;
 }
 
