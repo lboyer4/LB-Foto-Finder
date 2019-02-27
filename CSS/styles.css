@@ -9,7 +9,7 @@ body {
   color: #fff;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 95px 355px auto 40px;
+  grid-template-rows: 95px 400px auto 40px;
 }
 
 nav {
@@ -27,12 +27,14 @@ nav {
 
 h1 {
   font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 4px;
   margin: 20px 10px 10px 30px;
 }
 
 .camera {
   height: 35px;
-  width: 46px;
+  width: 50px;
 }
 
 .right-side {
@@ -71,37 +73,33 @@ main {
   width: 50%;
 }
 
+
 .title-label,
 .caption-label {
+  color: #C2B2B4;
   display: block;
   height: 20px;
+  margin: 25px auto 8px 0;
   width: 100%;
-}
-
-.title-label {
-  margin: 5px, auto 5px 2px;
-}
-
-.caption-label {
-  margin: 20px auto 5px 2px;
 }
 
 .title-input,
 .caption-input {
   border: 0;
-  border-radius: 2px;
+  border-radius: 1px;
   display: block;
   height: 44px;
   width: 100%;
 }
 
+}
 .caption-input {
   margin-bottom: 40px;  
 }
 
 button {
   background-color: #5B4447;
-  border-radius: 2px;
+  border-radius: 1px;
   border: 0;
   color: #fff;
   font-size: .90em;
@@ -123,11 +121,11 @@ button:Hover {
 
 .inputfile + label {
   background-color: #5B4447;
-  border-radius: 2px;
+  border-radius: 1px;
   display: block;
   cursor: pointer;
   height: 44px;
-  margin: 20px 0;
+  margin: 45px 0 15px 0;
   padding-top: 13px;
   text-align: center;
   width: 100%;
@@ -153,7 +151,7 @@ section {
   flex-wrap: wrap;
   grid-column: 1 /span 2;
   grid-row: 3;
-  padding: 85px;
+  justify-content: center;
   padding-top: 0;
 }
 
@@ -222,7 +220,7 @@ footer {
   display: none;
 }
 
-@media only screen and (max-width: 916px) {
+@media only screen and (max-width: 1125px) {
 
   .search-bar {
     margin-left: 10px;
@@ -231,24 +229,12 @@ footer {
   .view-favorites {
     margin-right: 7%;
   }
-
-  section {
-    padding-left: 100px;
-  }
-
 }
 
-@media only screen and (max-width: 768px) {
-
-  section {
-    padding-left: 85px ;
-  } 
-}
-
-@media only screen and (max-width: 627px) {
+@media only screen and (max-width: 700px) {
 
   body {
-    grid-template-rows: 180px 355px auto;
+    grid-template-rows: 155px 395px auto;
   }
 
   nav {
@@ -260,20 +246,22 @@ footer {
     width: 85%;
   }
 
-   section {
-    align-content: center;
-  }
-
   .photo-card {
     margin: 25px;
   }
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-width: 420px) {
 
   h1 {
     font-size: 33px;
+    letter-spacing: 2px;
     margin-left: 15px;
+  }
+
+  .camera {
+    height: 30px;
+    width: 38px;
   }
 
   .search-bar,
@@ -284,11 +272,6 @@ footer {
   .search-bar {
     width: 75%;
     margin-left: 6px;
-  }
-
- section {
-    padding: 0;
-    align-content: center;
   }
 
   .photo-card {
