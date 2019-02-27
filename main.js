@@ -121,7 +121,7 @@ function clickHandler(e) {
     targetPhoto.favorite = !targetPhoto.favorite;
     targetPhoto.favorite ? activateFavorite(e.target) : deactivateFavorite(e.target);
     targetPhoto.favorite ? increaseFavoriteCount() : decreaseFavoriteCount();
-    targetPhoto.updateContent(images);
+    targetPhoto.updatePhoto(images);
   }
 
   if (e.target.className === 'delete-button') {

@@ -9,6 +9,7 @@ body {
   color: #fff;
   display: grid;
   grid-template-rows: 95px 400px auto 40px;
+  grid-template-columns: 50% 50%
 }
 
 nav {
@@ -61,6 +62,7 @@ h1 {
 main {
   background-color: #3E2A35;
   grid-row: 2;
+  grid-column: 1 /span 2;
 }
 
 .create-card {
@@ -147,6 +149,7 @@ button:Hover {
 section {
   display: flex;
   flex-wrap: wrap;
+  grid-column: 1 /span 2;
   grid-row: 3;
   justify-content: center;
   padding-top: 0;
