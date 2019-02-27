@@ -17,28 +17,6 @@ cardContainer.addEventListener('mouseout', mouseOut);
 searchBar.addEventListener('keyup', searchImages);
 showFavorites.addEventListener('click', viewFavorites);
 
-function viewFavorites(e) {
-  e.preventDefault();
-  clearImages();
-  var filterBoolean = JSON.parse(e.target.dataset.filter)
-  console.log(JSON.parse(e.target.dataset.filter));
-  e.target.dataset.filter = !filterBoolean;
-  !filterBoolean ? showAllFavorites() : showAll();
-  }
-
-function showAllFavorites() {
-   for (var i = 0; i < images.length; i++) {
-    if (images[i].favorite) {
-      displayCard(images[i])
-    }
-  }
-}
-
-function showAll() {
-  for (var i = 0; i < images.length; i++) {
-    displayCard(images[i]);
-  }
-}
 
 //FUNCTIONS
 loadPage(images);
@@ -95,13 +73,15 @@ function displayCard(newPhotoObj) {
       </div>
     </article>`
    cardContainer.insertAdjacentHTML('afterbegin', text);
+    var msgPhoto = document.querySelector('#add-photo-message');
+    msgPhoto.classList.add('add-photo-message');
 }
 
 function saveContent(e) {
   var element = e.target;
   var text = e.target.textContent;
   var targetPhoto = findPhoto(e);
-  
+
   if (element.className === 'photo-title') {
     targetPhoto.title = text;
   }
@@ -145,14 +125,14 @@ function deleteIdea(e) {
 
 function increaseFavoriteCount() {
 	var favoriteCount = document.querySelector('.favorite-count');
-	var totalFavorite =Number(favoriteCount.innerHTML);
+	var totalFavorite = Number(favoriteCount.innerHTML);
 	totalFavorite++;
 	favoriteCount.innerHTML = totalFavorite;
 }
 
 function decreaseFavoriteCount() {
 		var favoriteCount = document.querySelector('.favorite-count');
-		var totalFavorite =Number(favoriteCount.innerHTML);
+		var totalFavorite = Number(favoriteCount.innerHTML);
 		totalFavorite--;
 		favoriteCount.innerHTML = totalFavorite;
 }
@@ -203,6 +183,29 @@ function searchImages(e) {
       photoMatches.push(images[i]);
       displayCard(images[i]);
     }
+  }
+}
+
+function viewFavorites(e) {
+  e.preventDefault();
+  clearImages();
+  var filterBoolean = JSON.parse(e.target.dataset.filter)
+  console.log(JSON.parse(e.target.dataset.filter));
+  e.target.dataset.filter = !filterBoolean;
+  !filterBoolean ? showAllFavorites() : showAll();
+  }
+
+function showAllFavorites() {
+   for (var i = 0; i < images.length; i++) {
+    if (images[i].favorite) {
+      displayCard(images[i])
+    }
+  }
+}
+
+function showAll() {
+  for (var i = 0; i < images.length; i++) {
+    displayCard(images[i]);
   }
 }
 
